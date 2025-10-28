@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS `clientes` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `clientes`;
+
+CREATE TABLE IF NOT EXISTS `clientes` (
+  `ID_Client` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(150) NOT NULL,
+  `email` VARCHAR(150) NOT NULL,
+  `telefono` VARCHAR(50),
+  `empresa` VARCHAR(150),
+  `cargo` VARCHAR(100),
+  `temas_de_interes` TEXT,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID_Client`),
+  UNIQUE KEY `uniq_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

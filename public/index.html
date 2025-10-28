@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Gestión de Clientes</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Clientes — Mantenimiento</h1>
+  </header>
+
+  <nav id="menu">
+    <button id="btn-insert">➕ Nuevo Cliente</button>
+  </nav>
+
+  <main>
+    <!-- Add missing consulta section -->
+    <section id="consulta">
+      <div class="controls">
+        <input id="search" placeholder="🔍 Buscar..." type="search">
+        <button id="btn-search">Buscar</button>
+      </div>
+
+      <div id="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Empresa</th>
+              <th>Cargo</th>
+              <th>Temas de interés</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="client-table-body"></tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button id="prev-page">← Anterior</button>
+        <span id="page-info">Página 1</span>
+        <button id="next-page">Siguiente →</button>
+      </div>
+    </section>
+
+    <section id="form-section" style="display:none;">
+      <h2 id="form-title">Insertar cliente</h2>
+      <form id="client-form">
+        <input type="hidden" name="ID_Client">
+
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="telefono">Teléfono</label>
+        <input id="telefono" name="telefono">
+
+        <label for="empresa">Empresa</label>
+        <input id="empresa" name="empresa">
+
+        <label for="cargo">Cargo</label>
+        <input id="cargo" name="cargo">
+
+        <label for="temas_de_interes">Temas de interés</label>
+        <textarea id="temas_de_interes" name="temas_de_interes"></textarea>
+
+        <!-- Fechas (solo lectura en edición) -->
+        <label for="created_at">Fecha de alta</label>
+        <input id="created_at" name="created_at" readonly>
+
+        <label for="updated_at">Fecha de última modificación</label>
+        <input id="updated_at" name="updated_at" readonly>
+
+        <div class="form-actions">
+          <button type="submit" id="save-btn">Guardar</button>
+          <button type="button" id="cancel-btn">Cancelar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Add this before closing </body> tag -->
+  <div id="delete-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h3>Confirmar Eliminación</h3>
+      <p>¿Está seguro que desea eliminar al cliente?</p>
+      <div class="client-info">
+        <p><strong>ID:</strong> <span id="delete-client-id"></span></p>
+        <p><strong>Nombre:</strong> <span id="delete-client-name"></span></p>
+      </div>
+      <div class="modal-actions">
+        <button id="confirm-delete" class="danger">Eliminar</button>
+        <button id="cancel-delete">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
