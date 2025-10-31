@@ -24,10 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const cancelDeleteBtn = document.getElementById('cancel-delete');
 
   // Handler for insert button
-  btnInsert.addEventListener('click', () => { 
-    showForm(); 
-    prepareFormForInsert(); 
-  });
+  if (btnInsert) {
+    btnInsert.addEventListener('click', () => {
+      if (typeof showForm === 'function' && typeof prepareFormForInsert === 'function') {
+        showForm();
+        prepareFormForInsert();
+      }
+    });
+  } else {
+    console.warn('#btn-insert no encontrado en el DOM — listener omitido');
+  }
 
   btnSearch.addEventListener('click', () => { currentPage = 1; loadClients(); });
   prevPage.addEventListener('click', () => { if (currentPage>1) { currentPage--; loadClients(); } });
